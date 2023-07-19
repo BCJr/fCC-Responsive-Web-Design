@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenAI API Documentation</title>
+    <link rel="stylesheet" href="docs_styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header><h1>OpenAI API</h1></header>
+        <ul>
+          <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+          <li><a href="#Authentication" class="nav-link">Authentication</a></li>
+          <li><a href="#List_Models" class="nav-link">List Models</a></li>
+          <li><a href="#Completions" class="nav-link">Completions</a></li>
+          <li><a href="#Chats" class="nav-link">Chats</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header><h2>Introduction<h2></header>
+        <p>You can interact with the API through HTTP requests from any language. This guide will use the official Node.js library.</p>
+        <p>To install the official Node.js library, run the following command in your Node.js project directory:</p>
+        <code>npm install openai</code>
+      </section>
+      <section class="main-section" id="Authentication">
+        <header><h2>Authentication</h2></header>
+        <p>The OpenAI API uses API keys for authentication. Visit your API Keys page to retrieve the API key you'll use in your requests.</p>
+        <p>All API requests should include your API key in an Authorization HTTP header as follows:</p>
+        <code>Authorization: Bearer OPENAI_API_KEY</code>
+        <h3>Requesting organization</h3>
+        <p>For users who belong to multiple organizations, you can pass a header to specify which organization is used for an API request. Usage from these API requests will count against the specified organization's subscription quota.</p>
+        <p>Example with the openai Node.js package:</p>
+        <code>import { Configuration, OpenAIApi } from "openai";<br>
+const configuration = new Configuration({<br><span></span>organization: "org-ZQHmxYtibcqxBJIf8a1wKTHz",<br>
+    <span></span>apiKey: process.env.OPENAI_API_KEY,<br>
+});<br>
+const openai = new OpenAIApi(configuration);<br>
+const response = await openai.listEngines();</code>
+        <p>Organization IDs can be found on your Organization settings page.</p>
+      </section>
+      <section class="main-section" id="List_Models">
+        <header><h2>List Models</h2></header>
+        <p>List and describe the various models available in the API. You can refer to the Models documentation to understand what models are available and the differences between them.</p>
+        <p>You'll need to make a GET request to https://api.openai.com/v1/models</p>
+        <code>
+          const { Configuration, OpenAIApi } = require("openai");<br>
+const configuration = new Configuration({<br>
+  apiKey: process.env.OPENAI_API_KEY,<br>
+});<br>
+const openai = new OpenAIApi(configuration);<br>
+const response = await openai.listModels();
+        </code>
+        <p>This will list the currently available models, and provides basic information about each one such as the owner and availability.</p>
+      </section>
+      <section class="main-section" id="Completions">
+        <header><h2>Completions</h2></header>
+        <p>Creates a completion for the provided prompt and parameters</p>
+        <p>You'll need to send a POST request to https://api.openai.com/v1/completions</p>
+        <code>
+          const { Configuration, OpenAIApi } = require("openai");<br>
+const configuration = new Configuration({<br>
+  apiKey: process.env.OPENAI_API_KEY,<br>
+});<br>
+const openai = new OpenAIApi(configuration);<br>
+const response = await openai.createCompletion({<br>
+  model: "text-davinci-003",<br>
+  prompt: "Say this is a test",<br>
+  max_tokens: 7,<br>
+  temperature: 0,<br>
+});
+        </code>
+        <h3>Request Body</h3>
+        <p>These are some of the parameters you can use to tailor the response to your specifications:</p>
+        <ul>
+          <li>model (<span class="data-type">string</span>) (<span class="requirement">Required</span>):ID of model to use.</li>
+          <li>prompt (<span class="data-type">string or array</span>) (<span class="requirement">Optional</span>):The prompt to generate a completion for.</li>
+          <li>max_tokens (<span class="data-type">integer</span>) (<span class="requirement">Optional</span>):The maximum number of tokens to generate in the completion.</li>
+          <li>temperature (<span class="data-type">number</span>) (<span class="requirement">Optional</span>): Between 0 and 2 with lower numbers making output more random and higher numbers making output more deterministic.</li>
+          <li>n (<span class="data-type">integer</span>) (<span class="requirement">Optional</span>): Number of completions to generate for each prompt.</li>
+          <li>stop (<span class="data-type">string or array</span>) (<span class="requirement">Optional</span>): Up to 4 sequences where the API will stop generating further tokens.</li>
+        </ul>
+      </section>
+      <section class="main-section" id="Chats">
+        <header><h2>Chats</h2></header>
+        <p>Given a list of messages describing a conversation, the model will return a response.</p>
+        <p>You'll need to send a POST request to https://api.openai.com/v1/chat/completions</p>
+        <code>
+          const { Configuration, OpenAIApi } = require("openai");<br>
+const configuration = new Configuration({<br>
+  apiKey: process.env.OPENAI_API_KEY,<br>
+});<br>
+const openai = new OpenAIApi(configuration);<br>
+const completion = await openai.createChatCompletion({<br>
+  model: "gpt-3.5-turbo",<br>
+  messages: [{role: "user", content: "Hello world"}],<br>
+});<br>
+console.log(completion.data.choices[0].message);<br>
+        </code>
+      </section>
+    </main>
+  </body>
+</html>

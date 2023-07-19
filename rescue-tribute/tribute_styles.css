@@ -1,0 +1,100 @@
+* {
+    font-family: lato, sans-serif;
+    font-weight: 400;
+  }
+  
+  body {
+    min-width: 600px;
+  }
+  
+  main {
+    background-color: #DEDEDE;
+    margin: 50px 10px;
+    border-radius: 10px;
+  }
+  
+  #headline {
+    display: flex;
+    flex-wrap: no-wrap;
+    padding-top: 20px;
+    padding-bottom: 10;
+    justify-content: center;
+  }
+  
+  #headline h1 {
+    margin: 0;
+    min-width: 121px;
+  }
+  
+  #styled-title {
+    color: #EA0A2A;
+    transform: rotate(-10deg);
+    border: 2px solid #EA0A2A;
+    border-radius: 10px;
+    max-width: 121px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+  #mission-title {
+    padding-left: 3px;
+    font-weight: 700;
+  }
+  
+  #img-div {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 40px;
+      margin-inline-end: 40px;
+      background-color: white;
+      padding: 20px;
+  }
+  
+  #image {
+      max-width: 100%;
+      display: block;
+      height: auto;
+      margin: 0 auto;
+  }
+  
+  #img-caption {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  #timeline {
+    max-width: 70%;
+    padding-left: 15%;
+    padding-top: 30px;
+  }
+  
+  #timeline-title {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #year {
+    font-weight: 700;
+  }
+  
+  #victory {
+    padding-top: 30px;
+  }
+  
+  #program-name, #program-slogan {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #tribute-info {
+    padding-top: 30px;
+  }
+  
+  #tribute-link {
+    color: #EA0A2A;
+  }

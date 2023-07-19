@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> Project Feedback Form </title>
+    <link rel="stylesheet" href="survey_styles.css" />
+  </head>
+  <header>
+    <h1 id="title">Project Feedback Form</h1>
+    <p id="description">Please let me know what you think.  Your feedback really helps!</p>
+  </header>
+  <body>
+    
+    <form id="survey-form">
+      <fieldset>
+        <label id="name-label" for="name">Enter Your Nickname <input id="name" name"name" type="text" placeholder="Ramses" required> </input></label>
+        <label id="email-label" for="email-label">Enter Your Email<input id="email" name="email" type="email" placeholder="mascot@unc.edu" required></input></label>
+        <label for="role">What's your role in the tech field?</label>
+        <label for="professional"><input id="professional" type="radio" name="role" value="professional">Professional</input>
+        <label for="student"><input id="student" type="radio" name="role" value="student">Student</input></label>
+        <label for="hobbiest"><input id="hobbiest" type="radio" name="role" value="hobbiest">Hobbiest</input></label>
+        <label for="other"><input id="other" type="radio" name="role" value="other">Other</input></label>
+      </fieldset>
+      <fieldset>
+        <p>How did you learn about this website?</p>
+        <label id="referral-label" for="github" class="next-line"><input type="checkbox" id="github" name="github" value="github">GitHub</input></label>
+        <label id="referral-label" for="linkedin"><input type="checkbox" id="linkedin" name="linkedin" value="linkedin">LinkedIn</input></label>
+        <label id="referral-label" for="facebook"><input type="checkbox" id="facebook" name="facebook" value="facebook">Facebook</input></label>
+        <label id="referral-label" for="youtube"><input type="checkbox" id="youtube" name="youtube" value="youtube">Youtube</input></label>
+        <label id="referral-label" for="networking"><input type="checkbox" id="networking" name="networking" value="networking">Networking</input></label>
+        <label id="referral-label" for="other"><input type="checkbox" id="other" name="other" value="other">Other</input></label>
+        <label id="dropdown-label" for"dropdown">
+          <p>Which project would you like to leave feedback for?</p>
+          <select id="dropdown" name="dropdown">
+            <option value="">(select one)
+            </option>
+            <option value="1">Piano project
+            </option>
+            <option value="2">Flashcard app
+            </option>
+            <option value="3">Portfolio website
+          </select>
+        </label>
+        <label id="number-label" for="number">On a scale of 1 (poor) and 10 (perfect), how would you rate this project?<input id="number" type="number" min="1" max="10" step="1" pattern="[0-9]" placeholder="#"></input></label>
+        <label id="feedback-label" for="feedback">Please leave a brief description of what you think about the website, any improvements you would recommend, or just how you feel today.  Thank you!<textarea id="feedback" name="feedback"  rows="5" cols="30" placeholder="Could improve on ... by ..."></textarea></label>
+      </fieldset>
+      <input type="submit" id="submit" value="Submit" for="survey-form" />
+    </form>
+  </body>  
+</html>
